@@ -55,7 +55,6 @@ DevOpsAssignment/
 ├── README.md                  # Project documentation
 └── LICENSE                    # License for the project
 
-```																					 **
 ## CloudFormation Setup
 Infrastructure Resources:
 The following AWS resources will be provisioned using CloudFormation templates:
