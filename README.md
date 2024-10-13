@@ -114,6 +114,7 @@ The pipeline consists of several stages:
 
 ![CICD_FLOW](https://github.com/images/CICD_FLOW.jpg)
 
+
 ## Pipeline Setup
 
 To set up the pipeline, ensure the following configurations are in place:
@@ -148,8 +149,5 @@ To optimize costs, consider the following strategies:
 
 ## Conclusion
 
-<<<<<<< HEAD
 The deployment of the OpenSupports application using AWS CloudFormation and a CI/CD pipeline significantly enhances efficiency, consistency, and scalability across environments. By following the outlined infrastructure setup and security best practices, organizations can ensure a robust deployment while optimizing costs. This approach not only simplifies the management of resources but also streamlines the application lifecycle, enabling quicker releases and improved application performance.
-=======
-The deployment of the OpenSupports application using AWS CloudFormation and a CI/CD pipeline significantly enhances efficiency, consistency, and scalability across environments. By following the outlined infrastructure setup and security best practices, organizations can ensure a robust deployment while optimizing costs. This approach not only simplifies the management of resources but also streamlines the application lifecycle, enabling quicker releases and improved application performance.
->>>>>>> df2eb7bc1f8b200feaed671073285043e0e1a031
+
