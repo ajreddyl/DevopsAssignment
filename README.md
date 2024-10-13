@@ -1,68 +1,144 @@
-# OpenSupports AWS Deployment
+DevOps Assignment: OpenSupports Deployment
+This project demonstrates how to set up the infrastructure for the OpenSupports application using AWS CloudFormation and how to deploy the application across multiple environments using a CI/CD pipeline.
 
-This repository contains AWS CloudFormation templates and a CI/CD pipeline to deploy the OpenSupports application across Development, Staging, and Production environments using AWS CodePipeline.
+Table of Contents
+Overview
+Prerequisites
+Project Structure
+CloudFormation Setup
+Infrastructure Resources
+Deploying with CloudFormation
+CI/CD Pipeline
+Pipeline Flow
+Pipeline Setup
+Deploying OpenSupports Application
+Security Best Practices
+Cost Optimization
+Conclusion
+Overview
+This project involves:
 
-## Table of Contents
-1. [Overview](#overview)
-2. [Infrastructure Components](#infrastructure-components)
-3. [CI/CD Pipeline](#cicd-pipeline)
-4. [Cost Optimization](#cost-optimization)
-5. [Security Best Practices](#security-best-practices)
-6. [Prerequisites](#prerequisites)
-7. [Deployment Steps](#deployment-steps)
-8. [Monitoring and Logging](#monitoring-and-logging)
-9. [Flow Diagram](#flow-diagram)
-10. [Future Improvements](#future-improvements)
+Setting up infrastructure using AWS CloudFormation for the OpenSupports application (a ticketing system).
+Deploying the application across three environments: development, staging, and production.
+Implementing a CI/CD pipeline to automate deployments and promotions between environments.
+Ensuring security best practices and cost optimizations.
 
-## Overview
-This project uses AWS CloudFormation to manage and provision the infrastructure required to run OpenSupports across multiple environments. The application is deployed in the Development, Staging, and Production environments, with a CI/CD pipeline automating the process.
+Above: Architecture overview for the OpenSupports multi-environment deployment.
 
-## Infrastructure Components
-The CloudFormation templates in this repository set up the following components:
-- **EC2 Instances**: Amazon Linux 2 instances to host the OpenSupports application. Spot instances are used in Development and Staging for cost savings, while On-Demand instances are used for Production.
-- **RDS (MySQL)**: Relational database used by OpenSupports. Each environment has an isolated RDS instance.
-- **S3 Bucket**: A single S3 bucket for storing static files, shared across all environments.
-- **VPC, Subnets, and Security Groups**: Secure networking components with public subnets for the web servers and private subnets for the databases.
-- **IAM Roles**: IAM roles with least-privilege access for the EC2 instances and pipeline to interact with other AWS services.
-- **CloudWatch**: For monitoring application performance, logs, and setting alarms for high CPU utilization.
+Prerequisites
+Before starting, ensure you have the following:
 
-## CI/CD Pipeline
-We use AWS CodePipeline to automate the deployment process. The pipeline stages are as follows:
-1. **Source**: Pulls the source code from the OpenSupports GitHub repository.
-2. **Build**: (Optional) If needed, builds the application using AWS CodeBuild.
-3. **Deploy to Development**: Deploys the application and infrastructure for the Development environment using CloudFormation.
-4. **Staging Approval**: After successful deployment to Development, manual approval is required to promote to Staging.
-5. **Deploy to Staging**: Deploys the application and infrastructure for the Staging environment.
-6. **Production Approval**: After successful deployment and testing in Staging, manual approval is required to promote to Production.
-7. **Deploy to Production**: Deploys the application and infrastructure for the Production environment.
+AWS Account: For provisioning resources like EC2, RDS, S3, etc.
+AWS CLI: To interact with AWS from the command line.
+Terraform: If you plan to manage infrastructure through Terraform.
+GitHub: For version control and CI/CD setup (e.g., GitHub Actions).
+Docker: For containerized application deployments (optional).
+Tools and Technologies Used:
+AWS CloudFormation: Infrastructure as Code (IaC) to provision resources.
+GitHub Actions / AWS CodePipeline: For automating deployments.
+EC2, RDS, S3: Core AWS services for hosting and storing application data.
+CloudWatch: For monitoring infrastructure and application performance.
+Project Structure
 
-## Pipeline Flow Diagram
-Here’s an illustration of the CI/CD pipeline:
+DevOpsAssignment/
+├── cloudformation/            # CloudFormation templates for provisioning resources
+│   ├── vpc.yaml               # VPC, subnets, security groups, and IAM roles
+│   ├── ec2.yaml               # EC2 instances setup
+│   ├── rds.yaml               # RDS (MySQL) setup
+│   ├── s3.yaml                # S3 bucket for static files
+│   └── cloudwatch.yaml        # CloudWatch monitoring setup
+├── .github/
+│   └── workflows/
+│       └── deploy.yml         # GitHub Actions pipeline for CI/CD
+├── opensupports/              # Forked OpenSupports application code
+├── README.md                  # Project documentation
+└── LICENSE
+CloudFormation Setup
+Infrastructure Resources
+The following AWS resources will be provisioned using CloudFormation templates:
 
-![Architecture Diagram](assets/architecture-diagram.png)
+EC2 Instances: Hosts the OpenSupports application.
+RDS (MySQL): Manages the application’s database.
+S3 Bucket: Stores static files (images, documents).
+VPC, Subnets, and Security Groups: Ensures network isolation and security.
+IAM Roles: Manages secure access for EC2 and RDS.
+CloudWatch: For application and infrastructure monitoring.
 
-## Architecture Diagram
-Below is the architecture diagram for the OpenSupports application infrastructure.
+Above: AWS Resources provisioned using CloudFormation templates.
 
-![Architecture Diagram](assets/architecture-diagram.png)
+Deploying with CloudFormation
+Clone the repository:
 
-## Deployment Process
-1. **Fork the Repository**: Fork the [OpenSupports](https://github.com/opensupports/opensupports) repository to your GitHub account.
-2. **Create CloudFormation Templates**: Develop templates for EC2 instances, RDS, S3, VPC, and CloudWatch.
-3. **Set Up Multiple Environments**: Use CloudFormation for Development, Staging, and Production environments.
-4. **CI/CD Pipeline Setup**: Automate deployments and promote changes across environments.
+bash
+Copy code
+git clone https://github.com/ajreddyl/DevopsAssignment.git
+cd DevopsAssignment
+Deploy VPC (network layer):
 
-## CI/CD Pipeline
-The CI/CD pipeline utilizes AWS CodePipeline to automate the deployment process. It includes stages for source, build, and deployment, with manual approval steps for promotions.
+bash
+Copy code
+aws cloudformation create-stack --stack-name OpenSupportsVPC --template-body file://cloudformation/vpc.yaml --parameters file://cloudformation/vpc-params.json
+Deploy EC2 instances:
 
-## Usage Instructions
-To deploy the application:
-- Clone the repository.
-- Update parameters in the CloudFormation templates.
-- Deploy using AWS Management Console or AWS CLI.
+bash
+Copy code
+aws cloudformation create-stack --stack-name OpenSupportsEC2 --template-body file://cloudformation/ec2.yaml --parameters file://cloudformation/ec2-params.json
 
-## Contributing
-If you'd like to contribute, please fork the repo and submit a pull request with your changes.
+Above: EC2 instances deployed through CloudFormation.
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+CI/CD Pipeline
+Pipeline Flow
+The CI/CD pipeline automates the following steps:
+
+Deploys the OpenSupports application to the development environment.
+Runs tests and verifies the deployment.
+Promotes the application to the staging environment after passing tests.
+If tests pass in staging, the application is promoted to production.
+
+Above: CI/CD pipeline flow from development to production.
+
+Pipeline Setup
+If using GitHub Actions, the pipeline configuration file (deploy.yml) is located in .github/workflows/.
+
+Create Environment Secrets in GitHub:
+
+AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY
+ENV (development, staging, production)
+Configure GitHub Actions: The workflow (deploy.yml) automatically deploys the application to the respective environments based on the defined branches:
+
+dev branch: Deploys to development.
+staging branch: Deploys to staging.
+main branch: Deploys to production.
+Example workflow step:
+
+yaml
+Copy code
+- name: Deploy to EC2
+  run: |
+    aws cloudformation update-stack --stack-name OpenSupportsEC2 --template-body file://cloudformation/ec2.yaml
+Deploying OpenSupports Application
+Deploy to Development:
+
+Ensure the dev branch has the latest code changes.
+Push changes to trigger the pipeline and deploy to the development environment.
+Promote to Staging:
+
+Once deployment is verified, push the code to the staging branch to trigger promotion to the staging environment.
+Promote to Production:
+
+After successfully testing in staging, push to the main branch to deploy the application to the production environment.
+Security Best Practices
+Use IAM Roles with the least privilege necessary for EC2, RDS, and S3 access.
+Enable encryption for S3 buckets and RDS databases.
+Set up security groups to limit access to EC2 instances and databases.
+Use CloudWatch alarms to monitor resource utilization and downtime.
+
+Above: Example security best practices for AWS resources.
+
+Cost Optimization
+Use Auto Scaling for EC2 instances to scale resources based on demand.
+Consider using Spot Instances in non-production environments (development, staging) to reduce costs.
+Set up S3 Lifecycle Policies to manage and reduce storage costs for old data.
+Conclusion
+This project demonstrates a scalable, secure, and automated way to deploy and manage the OpenSupports application across multiple environments using AWS CloudFormation and CI/CD pipelines.
