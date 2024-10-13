@@ -39,14 +39,7 @@ We use AWS CodePipeline to automate the deployment process. The pipeline stages 
 ## Pipeline Flow Diagram
 Here’s an illustration of the CI/CD pipeline:
 
-```mermaid
-graph TD
-    A[Source] --> B[Build]
-    B --> C[Deploy to Development]
-    C --> D[Manual Approval for Staging]
-    D --> E[Deploy to Staging]
-    E --> F[Manual Approval for Production]
-    F --> G[Deploy to Production]
+![Architecture Diagram](assets/architecture-diagram.png)
 
 ## Architecture Diagram
 Below is the architecture diagram for the OpenSupports application infrastructure.
