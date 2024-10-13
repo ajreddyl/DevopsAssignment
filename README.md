@@ -56,13 +56,11 @@ DevOpsAssignment/
 └── LICENSE                    # License for the project
 
 ## CloudFormation Setup
-```plaintext
-Infrastructure Resources:
-The following AWS resources will be provisioned using CloudFormation templates:
-
+Before deploying the OpenSupports application, ensure the following AWS resources will be provisioned using CloudFormation templates:
 - **EC2 Instances:** Hosts the OpenSupports application.
 - **RDS (MySQL):** Manages the application’s database.
 - **S3 Bucket:** Stores static files (images, documents).
 - **VPC, Subnets, and Security Groups:** Ensures network isolation and security.
 - **IAM Roles:** Manages secure access for EC2 and RDS.
 - **CloudWatch:** For application and infrastructure monitoring.
+
