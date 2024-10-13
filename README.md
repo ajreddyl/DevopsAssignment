@@ -114,7 +114,6 @@ The pipeline consists of several stages:
 
 ![CICD_FLOW](https://github.com/ajreddyl/images/blob/main/CICD_FLOW.png)
 
-
 ## Pipeline Setup
 
 To set up the pipeline, ensure the following configurations are in place:
