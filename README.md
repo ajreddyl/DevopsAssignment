@@ -40,7 +40,9 @@ Before starting, ensure you have the following:
 - **EC2, RDS, S3:** Core AWS services for hosting and storing application data.
 - **CloudWatch:** For monitoring infrastructure and application performance.
 
+
 ## Project Structure
+
 ```plaintext
 DevOpsAssignment/
 ├── cloudformation/            # CloudFormation templates for provisioning resources
@@ -55,6 +57,9 @@ DevOpsAssignment/
 ├── README.md                  # Project documentation
 └── LICENSE                    # License for the project
 
+
+<br> <!-- This empty line helps separate sections -->
+
 ## CloudFormation Setup
 Before deploying the OpenSupports application, ensure the following AWS resources will be provisioned using CloudFormation templates:
 - **EC2 Instances:** Hosts the OpenSupports application.
@@ -63,4 +68,3 @@ Before deploying the OpenSupports application, ensure the following AWS resource
 - **VPC, Subnets, and Security Groups:** Ensures network isolation and security.
 - **IAM Roles:** Manages secure access for EC2 and RDS.
 - **CloudWatch:** For application and infrastructure monitoring.
-
