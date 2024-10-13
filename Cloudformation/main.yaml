@@ -1,0 +1,65 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Main CloudFormation template for OpenSupports application"
+
+Parameters:
+  EnvironmentName:
+    Description: "The environment being deployed (dev, staging, prod)"
+    Type: String
+    AllowedValues: ["dev", "staging", "prod"]
+
+  InstanceType:
+    Description: "EC2 instance type"
+    Type: String
+    Default: "t2.micro"
+
+  KeyName:
+    Description: "EC2 Key Pair"
+    Type: AWS::EC2::KeyPair::KeyName
+
+  SpotEnvironment:
+    Description: "Use Spot instances for Dev and Staging"
+    Type: String
+    Default: "true"
+    AllowedValues: ["true", "false"]
+
+Conditions:
+  IsProduction: !Equals [!Ref EnvironmentName, "prod"]
+  IsSpotEnvironment: !Not [!Condition IsProduction]
+
+Resources:
+  VPCStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: https://s3.amazonaws.com/mybucket/cloudformation/vpc.yaml
+      Parameters:
+        EnvironmentName: !Ref EnvironmentName
+
+  EC2Stack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: https://s3.amazonaws.com/mybucket/cloudformation/ec2.yaml
+      Parameters:
+        EnvironmentName: !Ref EnvironmentName
+        InstanceType: !Ref InstanceType
+        KeyName: !Ref KeyName
+
+  RDSStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: https://s3.amazonaws.com/mybucket/cloudformation/rds.yaml
+      Parameters:
+        EnvironmentName: !Ref EnvironmentName
+
+  S3Stack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: https://s3.amazonaws.com/mybucket/cloudformation/s3.yaml
+      Parameters:
+        EnvironmentName: !Ref EnvironmentName
+
+  CloudWatchStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: https://s3.amazonaws.com/mybucket/cloudformation/cloudwatch.yaml
+      Parameters:
+        EnvironmentName: !Ref EnvironmentName
