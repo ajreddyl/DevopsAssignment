@@ -112,7 +112,7 @@ The pipeline consists of several stages:
 3. Manual Approval Stages: Includes manual approval steps for promoting the application from development to staging and from staging to production.
 4. Deploy to Staging and Production Stages: Deploys the application to the staging and production environments based on manual approvals.
 
-![CICD_FLOW](https://github.com/icons/CICD_FLOW.jpg.jpg)
+![CICD_FLOW](https://github.com/images/CICD_FLOW.jpg.jpg)
 
 
 ## Pipeline Setup
