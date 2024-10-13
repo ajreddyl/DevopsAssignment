@@ -43,6 +43,7 @@ Before starting, ensure you have the following:
 
 ## Project Structure
 
+```plaintext 
 DevOpsAssignment/
 ├── cloudformation/            # CloudFormation templates for provisioning resources
 │   ├── vpc.yaml               # VPC, subnets, security groups, and IAM roles
@@ -56,8 +57,7 @@ DevOpsAssignment/
 ├── README.md                  # Project documentation
 └── LICENSE                    # License for the project
 
-
-<br> <!-- This empty line helps separate sections -->
+```
 
 ## CloudFormation Setup
 Before deploying the OpenSupports application, ensure the following AWS resources will be provisioned using CloudFormation templates:
