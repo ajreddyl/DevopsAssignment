@@ -40,20 +40,20 @@ Before starting, ensure you have the following:
 - **EC2, RDS, S3:** Core AWS services for hosting and storing application data.
 - **CloudWatch:** For monitoring infrastructure and application performance.
 
-## Project Structure
-DevOpsAssignment/
-├── cloudformation/            # CloudFormation templates for provisioning resources
-│   ├── vpc.yaml               # VPC, subnets, security groups, and IAM roles
-│   ├── ec2.yaml               # EC2 instances setup
-│   ├── rds.yaml               # RDS (MySQL) setup
-│   ├── s3.yaml                # S3 bucket for static files
-│   └── cloudwatch.yaml        # CloudWatch monitoring setup
-├── .aws/                      # AWS CodePipeline configuration
-│   └── codepipeline.yml           # CodePipeline configuration file
-├── opensupports/              # Forked OpenSupports application code
-├── README.md                  # Project documentation
-└── LICENSE                    # License for the project
-
+## Project Structure          
+- **DevOpsAssignment/                                                                    **  
+- **├── cloudformation/            # CloudFormation templates for provisioning resources **
+- **│   ├── vpc.yaml               # VPC, subnets, security groups, and IAM roles        **
+- **│   ├── ec2.yaml               # EC2 instances setup                                 **
+- **│   ├── rds.yaml               # RDS (MySQL) setup                                   **
+- **│   ├── s3.yaml                # S3 bucket for static files                          **
+- **│   └── cloudwatch.yaml        # CloudWatch monitoring setup                         **
+- **├── .aws/                      # AWS CodePipeline configuration                      **
+- **│   └── codepipeline.yml           # CodePipeline configuration file                 **
+- **├── opensupports/              # Forked OpenSupports application code                **
+- **├── README.md                  # Project documentation                               **
+- **└── LICENSE                    # License for the project                             **
+																						 **
 ## CloudFormation Setup
 Infrastructure Resources:
 The following AWS resources will be provisioned using CloudFormation templates:
