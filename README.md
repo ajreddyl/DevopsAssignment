@@ -43,7 +43,6 @@ Before starting, ensure you have the following:
 
 ## Project Structure
 
-```plaintext
 DevOpsAssignment/
 ├── cloudformation/            # CloudFormation templates for provisioning resources
 │   ├── vpc.yaml               # VPC, subnets, security groups, and IAM roles
