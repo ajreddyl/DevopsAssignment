@@ -2,6 +2,7 @@
 
 This repository contains AWS CloudFormation templates and a CI/CD pipeline to deploy the OpenSupports application across Development, Staging, and Production environments using AWS CodePipeline.
 
+
 Table of Contents
 Overview
 Infrastructure Components
@@ -13,6 +14,9 @@ Deployment Steps
 Monitoring and Logging
 Flow Diagram
 Future Improvements
+
+
+
 Overview
 This project uses AWS CloudFormation to manage and provision the infrastructure required to run OpenSupports across multiple environments. The application is deployed in the Development, Staging, and Production environments, with a CI/CD pipeline automating the process.
 
