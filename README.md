@@ -56,6 +56,7 @@ DevOpsAssignment/
 └── LICENSE                    # License for the project
 
 ## CloudFormation Setup
+```plaintext
 Infrastructure Resources:
 The following AWS resources will be provisioned using CloudFormation templates:
 
