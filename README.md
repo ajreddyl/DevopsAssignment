@@ -1,4 +1,5 @@
-OpenSupports AWS Deployment
+                                                                                   OpenSupports AWS Deployment
+
 This repository contains AWS CloudFormation templates and a CI/CD pipeline to deploy the OpenSupports application across Development, Staging, and Production environments using AWS CodePipeline.
 
 Table of Contents
