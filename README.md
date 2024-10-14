@@ -18,17 +18,27 @@ This project demonstrates how to set up the infrastructure for the OpenSupports 
 - [Conclusion](#conclusion)
 
 ## Overview
-This project involves:
-- Setting up infrastructure using AWS CloudFormation for the OpenSupports application (a ticketing system).
-- Deploying the application across three environments: development, staging, and production.
-- Implementing a CI/CD pipeline to automate deployments and promotions between environments.
-- Ensuring security best practices and cost optimizations.
 
+This project focuses on deploying the OpenSupports application, an open-source ticket management system designed to streamline customer support and communication. The deployment leverages AWS CloudFormation to set up and manage the underlying infrastructure and AWS CodePipeline to automate the deployment across multiple environments.
+
+## Key Objectives:**
+- **Infrastructure Setup:** Using AWS CloudFormation to provision necessary resources such as EC2 instances for hosting the application, RDS for managing the database, and S3 for storing static assets.
+- **CI/CD Automation**: Implementing a CI/CD pipeline using AWS CodePipeline (or GitHub Actions) to automate the deployment of - **OpenSupports across three environments:** development, staging, and production.
+- **Security and Cost Optimization:** Following best practices to secure the application, including data encryption and least-privilege IAM roles, while optimizing resource costs by utilizing features like Auto Scaling and Spot Instances.
+- **AWS Services Used:**
+- **Amazon EC2:** For hosting the OpenSupports application.
+- **Amazon RDS:** To provide a managed relational database for storing support ticket data.
+- **Amazon S3:** For storing static content and other application files.
+- **AWS CodePipeline:** For automating the deployment process across environments.
+- **Amazon CloudWatch:** To monitor application performance and infrastructure metrics.
+
+This setup ensures a scalable, secure, and cost-effective deployment pipeline, simplifying the management and promotion of code changes through different stages of the development lifecycle.
 
 ## Prerequisites
 Before starting, ensure you have the following:
 - **AWS Account:** For provisioning resources like EC2, RDS, S3, etc.
 - **AWS CLI:** To interact with AWS from the command line.
+- **Terraform:** If you plan to manage infrastructure through Terraform.
 - **GitHub:** For version control and CI/CD setup (e.g., GitHub Actions).
 - **Docker:** For containerized application deployments (optional).
 
