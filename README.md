@@ -1,4 +1,4 @@
-# DevOps Assignment: OpenSupports Deployment
+# DevOps: OpenSupports Deployment
 
 This project demonstrates how to set up the infrastructure for the OpenSupports application using AWS CloudFormation and how to deploy the application across multiple environments using a CI/CD pipeline.
 
