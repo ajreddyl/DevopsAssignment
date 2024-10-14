@@ -48,6 +48,40 @@ Before starting, ensure you have the following:
 - **EC2, RDS, S3:** Core AWS services for hosting and storing application data.
 - **CloudWatch:** For monitoring infrastructure and application performance.
 
+## AWS IAM Roles and Permissions
+
+To execute the CloudFormation and CodePipeline processes successfully, ensure that your AWS user or IAM role has the following permissions:
+
+- **CloudFormation Permissions:**
+   - cloudformation:CreateStack
+   - cloudformation:DescribeStacks
+   - cloudformation:UpdateStack
+   - cloudformation:DeleteStack
+- **EC2 Permissions:**
+   - ec2:RunInstances
+   - ec2:CreateSecurityGroup
+   - ec2:AuthorizeSecurityGroupIngress
+   - ec2:DescribeInstances
+   - ec2:TerminateInstances
+- **RDS Permissions:**
+   - rds:CreateDBInstance
+   - rds:DescribeDBInstances
+   - rds:DeleteDBInstance
+- **S3 Permissions:**
+   - s3:CreateBucket
+   - s3:PutObject
+   - s3:GetObject
+- **IAM Permissions:**
+   - iam:CreateRole
+   - iam:AttachRolePolicy
+   - iam:PassRole
+- **CodePipeline and CodeBuild Permissions:**
+   - codepipeline:CreatePipeline
+   - codepipeline:StartPipelineExecution
+   - codebuild:CreateProject
+   - codebuild:StartBuild
+   
+Make sure to assign these permissions to an IAM role attached to your AWS CodePipeline, or directly to your user account, to avoid access issues during deployment.
 
 ## Project Structure
 
