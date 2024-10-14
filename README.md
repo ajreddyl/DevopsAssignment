@@ -29,7 +29,6 @@ This project involves:
 Before starting, ensure you have the following:
 - **AWS Account:** For provisioning resources like EC2, RDS, S3, etc.
 - **AWS CLI:** To interact with AWS from the command line.
-- **Terraform:** If you plan to manage infrastructure through Terraform.
 - **GitHub:** For version control and CI/CD setup (e.g., GitHub Actions).
 - **Docker:** For containerized application deployments (optional).
 
