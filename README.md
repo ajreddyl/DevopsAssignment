@@ -21,7 +21,7 @@ This project demonstrates how to set up the infrastructure for the OpenSupports 
 
 This project focuses on deploying the OpenSupports application, an open-source ticket management system designed to streamline customer support and communication. The deployment leverages AWS CloudFormation to set up and manage the underlying infrastructure and AWS CodePipeline to automate the deployment across multiple environments.
 
-## Key Objectives:**
+## Key Objectives:
 - **Infrastructure Setup:** Using AWS CloudFormation to provision necessary resources such as EC2 instances for hosting the application, RDS for managing the database, and S3 for storing static assets.
 - **CI/CD Automation**: Implementing a CI/CD pipeline using AWS CodePipeline (or GitHub Actions) to automate the deployment of - **OpenSupports across three environments:** development, staging, and production.
 - **Security and Cost Optimization:** Following best practices to secure the application, including data encryption and least-privilege IAM roles, while optimizing resource costs by utilizing features like Auto Scaling and Spot Instances.
